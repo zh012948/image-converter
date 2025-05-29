@@ -1,0 +1,257 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: 'Segoe UI', sans-serif;
+  background: #1b0f23;
+  color: #fff;
+  height: 100%;
+}
+
+.app {
+  padding: 1.5rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.logo {
+  background-color: #ff00cc;
+  color: #000;
+  padding: 0.4rem 0.9rem;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+nav button {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color 0.2s ease;
+}
+
+nav button:hover {
+  color: #ff00cc;
+}
+
+/* Main */
+.headline {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.headline span {
+  color: #ff00cc;
+}
+
+.drop-zone {
+  border: 2px dashed #ff00cc;
+  border-radius: 10px;
+  padding: 3rem;
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 3rem;
+  background: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.drop-zone:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Support Section */
+.supports h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.cards {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  flex: 1 1 200px;
+  background: #2b183a;
+  padding: 1.5rem;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 1.1rem;
+  transition: background 0.3s ease;
+  min-width: 140px;
+  max-width: 250px;
+}
+
+.card span {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.card:hover {
+  background: #3a2150;
+}
+
+/* Footer */
+footer {
+  margin-top: 3rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #999;
+}
+
+footer a {
+  color: #ff00cc;
+  text-decoration: none;
+  margin: 0 0.5rem;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* ---------------- Responsive Media Queries ---------------- */
+
+/* Small devices (phones under 480px) */
+@media (max-width: 480px) {
+  .headline {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  .drop-zone {
+    padding: 2rem 1rem;
+    font-size: 1rem;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav button {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .card {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+}
+
+/* Medium devices (phones 481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .headline {
+    font-size: 1.7rem;
+    text-align: center;
+  }
+
+  .drop-zone {
+    padding: 2.5rem 1rem;
+    font-size: 1.1rem;
+  }
+
+  .card {
+    flex: 1 1 45%;
+  }
+
+  nav {
+    justify-content: center;
+  }
+}
+
+/* Tablets (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .headline {
+    font-size: 2rem;
+  }
+
+  .card {
+    flex: 1 1 30%;
+  }
+
+  .drop-zone {
+    padding: 3rem;
+  }
+}
+
+/* Large screens (1025px and up) */
+@media (min-width: 1025px) {
+  nav {
+    gap: 1rem;
+  }
+
+  .headline {
+    font-size: 2.2rem;
+  }
+
+  .card {
+    flex: 1 1 23%;
+  }
+}
+
+
+
+.upload-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.controls select {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: white;
+  cursor: pointer;
+}
+
+.convert-btn {
+  background-color: #ff2b8a;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.convert-btn:hover {
+  background-color: #e51d76;
+}
+
+/* Card section remains the same unless you need a refresh, let me know */
