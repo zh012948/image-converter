@@ -30,7 +30,7 @@ function App() {
     formData.append("format", format);
 
     try {
-      const response = await fetch("https://image-converter-backend-40aq.onrender.com/", {
+      const response = await fetch("https://image-converter-backend-40aq.onrender.com/convert", {
         method: "POST",
         body: formData,
       });
