@@ -1,11 +1,12 @@
 {
-  "name": "server",
+  "name": "image-converter-app",
   "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
+  "description": "Full stack image converter using Vite + React + Node + Sharp",
+  "main": "server/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server/server.js",
+    "build": "npm run build:react",
+    "build:react": "vite build"
   },
   "keywords": [],
   "author": "",
@@ -15,5 +16,10 @@
     "express": "^5.1.0",
     "multer": "^2.0.0",
     "sharp": "^0.34.2"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   }
 }
