@@ -255,3 +255,9 @@ footer a:hover {
 }
 
 /* Card section remains the same unless you need a refresh, let me know */
+
+
+.convert-btn[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

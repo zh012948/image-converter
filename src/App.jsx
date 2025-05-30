@@ -5,6 +5,7 @@ function App() {
   const fileInputRef = useRef();
   const [selectedFile, setSelectedFile] = useState(null);
   const [format, setFormat] = useState("jpeg");
+  const [loading, setLoading] = useState(false); // 🔹 NEW
 
   const handleDropClick = () => {
     fileInputRef.current.click();
@@ -30,10 +31,14 @@ function App() {
     formData.append("format", format);
 
     try {
+      setLoading(true); // 🔹 Start loading
+
       const response = await fetch("https://image-converter-backend-40aq.onrender.com/convert", {
         method: "POST",
         body: formData,
       });
+
+      setLoading(false); // 🔹 Stop loading
 
       if (!response.ok) {
         const { error } = await response.json();
@@ -50,6 +55,7 @@ function App() {
       a.remove();
       URL.revokeObjectURL(downloadUrl);
     } catch (err) {
+      setLoading(false); // 🔹 Ensure loading stops
       console.error("Conversion failed:", err);
       alert("Something went wrong.");
     }
@@ -88,8 +94,8 @@ function App() {
           />
         </div>
 
-        <button className="convert-btn" onClick={handleConvert}>
-          Convert
+        <button className="convert-btn" onClick={handleConvert} disabled={loading}>
+          {loading ? "Converting..." : "Convert"}
         </button>
       </div>
 
