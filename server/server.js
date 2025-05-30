@@ -6,22 +6,18 @@ const fs = require("fs");
 const path = require("path");
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = 5000;
 
 app.use(cors());
 app.use(express.json());
 
-// Serve static files from React build
-app.use(express.static(path.join(__dirname, "..", "dist")));
-
-// Multer setup for in-memory uploads
+// Storage setup for uploaded files
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
-// Supported output formats
+// Supported formats
 const supportedFormats = ["jpeg", "png", "webp", "avif", "tiff"];
 
-// Convert endpoint
 app.post("/convert", upload.single("image"), async (req, res) => {
   try {
     const format = req.body.format;
@@ -38,11 +34,10 @@ app.post("/convert", upload.single("image"), async (req, res) => {
 
     const convertedBuffer = await sharp(req.file.buffer)[format]().toBuffer();
     const newFileName = `${Date.now()}.${format}`;
-    const outputDir = path.join(__dirname, "converted");
-    const filePath = path.join(outputDir, newFileName);
+    const filePath = path.join(__dirname, "converted", newFileName);
 
-    // Ensure converted folder exists
-    if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir);
+    // Ensure converted directory exists
+    if (!fs.existsSync("converted")) fs.mkdirSync("converted");
 
     fs.writeFileSync(filePath, convertedBuffer);
 
@@ -59,11 +54,6 @@ app.post("/convert", upload.single("image"), async (req, res) => {
     console.error("Conversion error:", err);
     res.status(500).json({ error: "Conversion failed" });
   }
-});
-
-// All other routes → serve index.html (React router support)
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "dist", "index.html"));
 });
 
 app.listen(PORT, () => {
