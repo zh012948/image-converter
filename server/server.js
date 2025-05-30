@@ -23,7 +23,7 @@ const upload = multer({ storage });
 const supportedFormats = ["jpeg", "png", "webp", "avif", "tiff"];
 
 // API to handle image conversion
-app.post("/convert", upload.single("image"), async (req, res) => {
+app.post("/converted", upload.single("image"), async (req, res) => {
   try {
     const format = req.body.format;
     const originalName = req.file.originalname;
