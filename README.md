@@ -1,12 +1,75 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 🖼️ Image Converter Web App (MERN Stack)
 
-Currently, two official plugins are available:
+A full-stack image converter web application built using **React.js**, **Node.js**, **Express**, and **Sharp**. This app allows users to upload an image and convert it to different formats like **JPG, PNG, and WebP**. After conversion, users can download the converted file instantly.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Live Demo
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🌐 [Live Website](https://image-converter-tkkn.onrender.com/)  
+
+
+---
+
+## 📸 Features
+
+- ✅ Upload any image (JPG, PNG, WebP)
+- 🔄 Convert between **JPG**, **PNG**, and **WebP** formats
+- ⬇️ Download converted images
+- ⚡ Fast conversion using `sharp` library
+- 🎯 Clean, mobile-friendly UI
+- 🧰 Built with MERN stack (MongoDB optional for tracking logs or history)
+- 🛡️ Secure file handling on the backend
+
+---
+
+## 🛠️ Tech Stack
+
+| Frontend      | Backend         | Other Tools        |
+|---------------|-----------------|--------------------|
+| React + Vite  | Node.js + Express | Sharp (image processing) |
+| Tailwind CSS (optional) | Multer (file uploads) | Vercel (Frontend Hosting) |
+| Axios         | CORS            | Render / Railway (Backend Hosting) |
+
+---
+
+## 📂 Folder Structure
+
+```
+root
+│
+├── client          # React frontend
+│   ├── public
+│   └── src
+│       ├── components
+│       └── App.jsx
+│
+├── server          # Node.js backend
+│   ├── uploads     # Temp uploaded images
+│   ├── converted   # Converted images
+│   └── index.js
+```
+
+
+
+
+## ✍️ Author
+
+**Zeeshan Haider**  
+📧 zh012948@gmail.com  
+🌐 [Portfolio](https://zeeshan-haider-1.vercel.app/)  
+🐙 [GitHub](https://github.com/zh012948)  
+💼 [LinkedIn](https://www.linkedin.com/in/m-zeeshan-haider-606bb3284/)
+
+---
+
+## 🤝 Support
+
+If you found this project useful, please consider giving it a ⭐️ on GitHub. It motivates me to build more cool stuff!
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
