@@ -6,18 +6,23 @@ const fs = require("fs");
 const path = require("path");
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
+// Enable CORS and JSON parsing
 app.use(cors());
 app.use(express.json());
 
-// Storage setup for uploaded files
+// Serve static files from root-level dist folder
+app.use(express.static(path.join(__dirname, "..", "dist")));
+
+// Multer for file upload (in memory)
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
-// Supported formats
+// Supported image formats
 const supportedFormats = ["jpeg", "png", "webp", "avif", "tiff"];
 
+// API to handle image conversion
 app.post("/convert", upload.single("image"), async (req, res) => {
   try {
     const format = req.body.format;
@@ -33,22 +38,17 @@ app.post("/convert", upload.single("image"), async (req, res) => {
     }
 
     const convertedBuffer = await sharp(req.file.buffer)[format]().toBuffer();
+
     const newFileName = `${Date.now()}.${format}`;
-    const filePath = path.join(__dirname, "converted", newFileName);
+    const outputDir = path.join(__dirname, "converted");
 
-    // Ensure converted directory exists
-    if (!fs.existsSync("converted")) fs.mkdirSync("converted");
+    if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir);
 
+    const filePath = path.join(outputDir, newFileName);
     fs.writeFileSync(filePath, convertedBuffer);
 
-    res.download(filePath, (err) => {
-      if (err) {
-        console.error("Error sending file:", err);
-        res.status(500).json({ error: "File sending failed" });
-      }
-
-      // Optional: Clean up after download
-      setTimeout(() => fs.unlink(filePath, () => { }), 5000);
+    res.download(filePath, () => {
+      setTimeout(() => fs.unlink(filePath, () => { }), 5000); // auto delete after 5s
     });
   } catch (err) {
     console.error("Conversion error:", err);
@@ -56,6 +56,12 @@ app.post("/convert", upload.single("image"), async (req, res) => {
   }
 });
 
+// Fallback for React Router
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "dist", "index.html"));
+});
+
+// Start server
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`✅ Server is running on http://localhost:${PORT}`);
 });
