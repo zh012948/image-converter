@@ -3,9 +3,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
-body, html {
+body,
+html {
   font-family: 'Segoe UI', sans-serif;
   background: #1b0f23;
   color: #fff;
