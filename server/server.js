@@ -8,6 +8,13 @@ const path = require("path");
 const app = express();
 const PORT = 5000;
 
+// For Health Checing 
+app.get("/", (req, res) => {
+  res.status(200).send("Backend is running!");
+});
+
+
+
 app.use(cors());
 app.use(express.json());
 
